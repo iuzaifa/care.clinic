@@ -55,13 +55,13 @@ const DoctorsSection : React.FC = () => {
   return (
     <>
         <section className="bg-white py-28">
-           <div className="max-w-7xl mx-auto sm:px-5"> 
+           <div className="max-w-7xl mx-auto"> 
               <SectionHeader className="text-center max-w-xl mx-auto" title="Meet Our Doctors" description="Our administration and support staff all have exceptional people skills and trained to assist you with all medical enquiries." />
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 md:mt-20 mt-10">
                    {doctors.map((data, index) => {
                       const Icon = data.icon;
                         return (
-                            <Card key={index} className="group cursor-pointer transition-all duration-300 hover:border-b-4 hover:border-b-cyan-600 hover:bg-cyan-700/5 bg-gray-100/55  border border-cyan-700/10">
+                            <Card key={index} className="group md:mx-0 sm:mx-5 cursor-pointer transition-all duration-300 hover:border-b-4 hover:border-b-cyan-600 hover:bg-cyan-700/5 bg-gray-100/55  border border-cyan-700/10">
                                 <CardImage src={data.imagesrc} alt={data.name} />
                                 <div className="p-8">
                                     <CardTitle className="text-gray-700">{data.name}</CardTitle>
