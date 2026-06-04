@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 import SocialLinks from '../SocialLinks';
 import FooterItem from './FooterItem';
 import Paragraph from '../../../../components/ui/Paragraph';
+import { linksData , departmentsData, contactsData} from './data';
 
 
 
 const Footer = () => {
   return (
     <>
-      <footer className="bg-white border-t">
+      <footer className="pt-14 border-t bg-white">
         <div className="max-w-7xl mx-auto px-4 py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <FooterItem title="" >
@@ -25,18 +26,80 @@ const Footer = () => {
 
             <FooterItem title="Useful Links">
               <div className="w-[150px] border-b-2 border-gray-100 my-3" />
-              <ul>
-                  <li><span>icon</span> <Link to={"#"}></Link></li>
+              <ul className="mt-5">
+                  {linksData.map((item, idx) => {
+                    const Icon = item.icon;
+                    
+                    return (
+                      <li key={idx} className="flex items-center gap-1 group cursor-pointer mb-3 text-base">
+                        {Icon && (
+                          <span className="text-cyan-600 transition-transform duration-300 group-hover:translate-x-1">
+                              <Icon size={16} />
+                          </span>
+                        )}
+
+                        <Link to={item.href} className="transition-colors duration-300 group-hover:text-cyan-600">
+                          {item.title}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                  
               </ul>
             </FooterItem>
 
             <FooterItem title="Departments">
               <div className="w-[150px] border-b-2 border-gray-100 my-3" />
+              <ul className="mt-5">
+                  {departmentsData.map((item, idx) => {
+                    const Icon = item.icon;
+                    
+                    return (
+                      <li key={idx} className="flex items-center gap-1 group cursor-pointer mb-3 text-base">
+                        {Icon && (
+                          <span className="text-cyan-600 transition-transform duration-300 group-hover:translate-x-1">
+                              <Icon size={16} />
+                          </span>
+                        )}
+
+                        <Link to={item.href} className="transition-colors duration-300 group-hover:text-cyan-600">
+                          {item.title}
+                        </Link>
+                      </li>
+                    )
+                  })}
+                  
+              </ul>
 
             </FooterItem>
             <FooterItem title="Contacts">
-              <div className="w-[150px] border-b-2 border-gray-100 my-3" />
-              <p>Paragraph or PTag</p>
+                <div className="w-[150px] border-b-2 border-gray-100 my-3" />
+                <div className="mt-5 space-y-4">
+                  {contactsData.map((item, idx) => (
+                    <div key={idx} className="grid grid-cols-[80px_1fr] gap-4">
+                      <span className="font-semibold text-slate-600">
+                        {item.title}:
+                      </span>
+
+                      <div className="flex flex-col gap-1">
+                        {(Array.isArray(item.value) ? item.value : [item.value]).map(
+                          (val, i) => (
+                            <Paragraph
+                              key={i}
+                              variant="default"
+                              leading="normal"
+                              size="sm"
+                              className=""
+                            >
+                               {val}
+                            </Paragraph>
+                          )
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
             </FooterItem>
           </div>
         </div>
@@ -48,3 +111,5 @@ const Footer = () => {
 }
 
 export default Footer;
+
+

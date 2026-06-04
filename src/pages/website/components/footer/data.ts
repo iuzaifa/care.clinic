@@ -1,10 +1,12 @@
-import type React from "react";
+import icons from "../../../../components/ui/icons"
+import type { IconType } from "react-icons";
+
 
 
 type NavItem = {
   title: string;
   href: string;
-  icon?: React.ReactNode;
+  icon?: IconType;
 };
 
 type ContactItem  = {
@@ -12,21 +14,60 @@ type ContactItem  = {
   value: string | string[];
 };
 
+
+
+
+
 const linksData: NavItem[] = [
   {
-    title: "Home",
+    title: "FAQs",
     href: "#",
-    icon: "home",
+    icon: icons.chevronRight,
+
   },
+  {
+    title: "Blog",
+    href: "#",
+    icon: icons.chevronRight,
+  },
+  {
+    title: "Weekly timetable",
+    href: "#",
+    icon: icons.chevronRight,
+  },
+  {
+    title: "Terms & Conditions",
+    href: "#",
+    icon: icons.chevronRight,
+  },
+  
 ];
 
 const departmentsData: NavItem[] = [
   {
     title: "Cardiology",
     href: "#",
-    icon: "heart",
+    icon: icons.chevronRight,
+
+  },
+  {
+    title: "Migraine Treatment",
+    href: "#",
+    icon: icons.chevronRight,
+  },
+  {
+    title: "General Consultation",
+    href: "#",
+    icon: icons.chevronRight,
+  },
+  {
+    title: "Injection Therapy",
+    href: "#",
+    icon: icons.chevronRight,
   },
 ];
+
+
 
 
 
@@ -40,9 +81,9 @@ const contactsData : ContactItem [] = [
     value: ["info@example.com"],
   },
   {
-    title: "Address :",
+    title: "Address",
     value: "1223 Fulton Street San Diego CA 941-23 USA",
-  },
+  }
 ];
 
 export {linksData ,departmentsData  , contactsData }

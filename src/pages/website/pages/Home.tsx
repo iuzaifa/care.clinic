@@ -1,10 +1,15 @@
-// import HeroSection from "../components/HeroSection";
+import HeroSection from "../components/HeroSection";
+
+import GoogleMap from "../components/GoogleMap";
 
 
 const Home = () => {
   return (
       <>
-        {/* <HeroSection/> */}
+        <HeroSection/>
+        
+        <GoogleMap/>
+
       </>
   )
 }
