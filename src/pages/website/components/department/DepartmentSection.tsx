@@ -27,11 +27,11 @@ const DepartmentSection = () => {
                     {departmentData.map((data, index) => {
                         const Icon = data.icon;
                         return (
-                            <Card key={index} className="group cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_35px_rgba(8,145,178,0.2)] border border-slate-50">
+                            <Card key={index} className="group bg-white cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_8px_35px_rgba(8,145,178,0.2)] border border-slate-50">
                                 <CardImage src={data.imagesrc} alt={data.title} />
                                 <div className="p-8">
-                                    <CardTitle>{data.title}</CardTitle>
-                                    <CardContent>{data.description}</CardContent>
+                                    <CardTitle className="text-gray-700">{data.title}</CardTitle>
+                                    <CardContent className="text-gray-600 text-sm" >{data.description}</CardContent>
                                     <button onClick={() => handleClick(index)} className="card-btn mt-5">
                                         {data.redoc}
                                         { Icon && (<span className={`transition-transform duration-300 ${clicked === index ? "translate-x-2" : ""}`}><Icon size={10} /></span>)}

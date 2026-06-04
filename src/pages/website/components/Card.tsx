@@ -7,10 +7,13 @@ type CardProps = {
 
 type CardTitleProps = {
   children: ReactNode;
+  className?: string;
+
 };
 
 type CardContentProps = {
   children: ReactNode;
+  className?: string;
 };
 
 type CardImageProps = {
@@ -20,23 +23,23 @@ type CardImageProps = {
 
 const Card = ({ children, className = "" }: CardProps) => {
   return (
-    <div className={`rounded-xl bg-white  ${className}`}>
+    <div className={`rounded-xl  ${className}`}>
       {children}
     </div>
   );
 };
 
-const CardTitle = ({ children }: CardTitleProps) => {
+const CardTitle = ({ children, className = "" }: CardTitleProps) => {
   return (
-    <h3 className="text-xl font-semibold text-slate-900">
+    <h3 className={`text-xl font-semibold ${className}`}>
       {children}
     </h3>
   );
 };
 
-const CardContent = ({ children }: CardContentProps) => {
+const CardContent = ({ children , className = ""}: CardContentProps) => {
   return (
-    <div className="mt-2 text-slate-600">
+    <div className={`mt-2 ${className}`}>
       {children}
     </div>
   );
