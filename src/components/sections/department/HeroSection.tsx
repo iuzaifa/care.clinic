@@ -3,7 +3,9 @@ import bloodtest from "../../../../assets/images/bloodtest.png";
 import electricalhearth from "../../../../assets/images/electricalhearth.png";
 import medicine from "../../../../assets/images/medicine.png";
 import medical from "../../../../assets/images/medical.png";
-import Paragraph from "../../../../components/ui/Paragraph";
+import Paragraph from "../../ui/Paragraph";
+
+
 
 const HeroSection = () => {
   return (
