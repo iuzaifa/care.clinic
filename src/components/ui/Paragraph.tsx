@@ -28,18 +28,11 @@ const variantMap = {
   danger: "text-red-600",
   inverse: "text-white",
   dark: "text-black",
-  primary : "text-cyan-700"
+  primary: "text-cyan-700",
 };
 
-const Paragraph = ({children, className = "" , size  = "sm", leading = "normal", variant = "default" }: ParagraphProps) => {
-  return (
-    
-    <p className={`${sizeMap[size]}  ${leadingMap[leading]} ${variantMap[variant]} ${className}`}>
-        {children}
-    </p>
-  )
-}
-
-
+const Paragraph = ({ children, className = "", size = "sm", leading = "normal", variant = "default" }: ParagraphProps) => {
+  return <p className={`${sizeMap[size]}  ${leadingMap[leading]} ${variantMap[variant]} ${className}`}>{children}</p>;
+};
 
 export default Paragraph;

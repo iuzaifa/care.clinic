@@ -6,9 +6,9 @@ src/
 ├── app/
 ├── components/
 ├── features/
-│   ├── auth/
-│   ├── users/
-│   └── appointments/
+│ ├── auth/
+│ ├── users/
+│ └── appointments/
 ├── pages/
 ├── hooks/
 ├── services/
@@ -31,31 +31,28 @@ store/ → Redux/Zustand
 types/ → TypeScript interfaces
 constants/ → enums, app constants
 
-
-
-
 src/
 ├── features/
-│   ├── auth/
-│   ├── doctors/
-│   ├── patients/
-│   ├── appointments/
-│   └── departments/
+│ ├── auth/
+│ ├── doctors/
+│ ├── patients/
+│ ├── appointments/
+│ └── departments/
 │
 ├── pages/
-│   ├── website/
-│   │   ├── Home.jsx
-│   │   ├── About.jsx
-│   │   └── Contact.jsx
-│   │
-│   └── admin/
-│       ├── Dashboard.jsx
-│       ├── Doctors.jsx
-│       └── Patients.jsx
+│ ├── website/
+│ │ ├── Home.jsx
+│ │ ├── About.jsx
+│ │ └── Contact.jsx
+│ │
+│ └── admin/
+│ ├── Dashboard.jsx
+│ ├── Doctors.jsx
+│ └── Patients.jsx
 │
 ├── layouts/
-│   ├── WebsiteLayout.jsx
-│   └── AdminLayout.jsx
+│ ├── WebsiteLayout.jsx
+│ └── AdminLayout.jsx
 │
 ├── routes/
 ├── components/
@@ -63,8 +60,8 @@ src/
 ├── api/
 └── store/
 
-
 <!-- Route Example -->
+
 /
 ├── /
 ├── /about
@@ -75,29 +72,30 @@ src/
 ├── /login
 │
 └── /admin
-    ├── /admin/dashboard
-    ├── /admin/doctors
-    ├── /admin/patients
-    ├── /admin/appointments
-    └── /admin/settings
-
+├── /admin/dashboard
+├── /admin/doctors
+├── /admin/patients
+├── /admin/appointments
+└── /admin/settings
 
     <!--  -->
 
 Sidebar:
+
 - Dashboard
 - Doctors
 - Patients
 - Appointments
 
 Navbar:
+
 - Search
 - Notifications
 - Profile
 - Logout
 
-
 <!-- header  -->
+
 Logo
 Home
 About
@@ -105,6 +103,5 @@ Services
 Doctors
 Contact
 Login
-
 
 care clinic

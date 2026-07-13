@@ -1,48 +1,34 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WebsiteLayout from "../layouts/WebsiteLayout";
-import Home from "../pages/website/pages/Home";
-import AdminLayout from "../layouts/AdminLayout";
-import Dashboard from "../pages/admin/pages/Dashboard";
-import Doctors from "../pages/admin/pages/Doctors";
-import About from "../pages/website/pages/About";
-import Departments from "../pages/website/pages/Departments";
-import Gallery from "../pages/website/pages/Gallery";
-import Pricing from "../pages/website/pages/Pricing";
-import Blog from "../pages/website/pages/Blog";
-import Contact from "../pages/website/pages/Contact";
+import Home from "../pages/Home";
+import About from "../pages/About";
+import Departments from "../pages/Departments";
+import Doctors from "../pages/Doctors";
+import Gallery from "../pages/Gallery";
+import Pricing from "../pages/Pricing";
+import Blog from "../pages/Blog";
+import Contact from "../pages/Contact";
 
-
-function AppRoutes () {
-    return (
-        <>
-            <BrowserRouter>
-                <Routes>
-                    {/* Public Website */}
-                    <Route element={<WebsiteLayout/>}>
-                        <Route path="/" element={<Home />}/>
-                        <Route path="/about" element={<About />}/>
-                        <Route path="/departments" element={<Departments />}/>
-                        <Route path="/doctors" element={<Doctors />}/>
-                        <Route path="/gallery" element={<Gallery />}/>
-                        <Route path="/pricing" element={<Pricing />}/>
-                        <Route path="/blog" element={<Blog />}/>
-                        <Route path="/contact" element={<Contact />}/>
-                        
-                    </Route>
-
-                     {/* Admin Panel */}
-                    <Route element={<AdminLayout />}>
-                        <Route path="/admin/dashboard" element={<Dashboard />} />
-                        <Route path="/admin/doctors" element={<Doctors />} />
-                    </Route>
-
-                </Routes>
-            
-            </BrowserRouter>
-
-        </>
-    )
-
+function AppRoutes() {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          {/* Public Website */}
+          <Route element={<WebsiteLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/departments" element={<Departments />} />
+            <Route path="/doctors" element={<Doctors />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/blog" element={<Blog/>} />
+            <Route path="/contact" element={<Contact/>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default AppRoutes;
