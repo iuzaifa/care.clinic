@@ -1,75 +1,68 @@
 import React from "react";
-import { FaCalendarAlt, FaUserMd, FaClipboardList, FaHeartbeat } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 interface Step {
-  icon: React.ReactNode;
+  icon: IconType;
   number: string;
   title: string;
   description: string;
 }
 
-const steps: Step[] = [
-  {
-    icon: <FaCalendarAlt />,
-    number: "01",
-    title: "Book Appointment",
-    description: "Choose a doctor and schedule your appointment easily.",
-  },
-  {
-    icon: <FaUserMd />,
-    number: "02",
-    title: "Meet Your Doctor",
-    description: "Consult with our expert doctors and share your concerns.",
-  },
-  {
-    icon: <FaClipboardList />,
-    number: "03",
-    title: "Get Treatment",
-    description: "Receive the best treatment plan tailored to your condition.",
-  },
-  {
-    icon: <FaHeartbeat />,
-    number: "04",
-    title: "Get Better",
-    description: "Follow up and recover with our continuous support and care.",
-  },
-];
+interface HowItWorksProps {
+  badge: string;
+  title: string;
+  steps: Step[];
+}
 
-const HowItWorks: React.FC = () => {
+const HowItWorks: React.FC<HowItWorksProps> = ({
+  badge,
+  title,
+  steps,
+}) => {
   return (
     <section className="bg-white px-[5vw] py-20">
-      <div className="max-w-[1320px] mx-auto text-center">
-        <span className="inline-block text-[13px] font-bold tracking-[0.16em] uppercase text-[#0f8ea3] mb-3">
-          How It Works
+      <div className="mx-auto max-w-[1320px] text-center">
+        <span className="mb-3 inline-block text-[13px] font-bold uppercase tracking-[0.16em] text-[#0f8ea3]">
+          {badge}
         </span>
-        <h2 className="text-[28px] sm:text-[32px] font-extrabold leading-tight text-slate-900 mb-14">
-          Simple Steps To Get Your Solution
+
+        <h2 className="mb-14 text-[28px] font-extrabold leading-tight text-slate-900 sm:text-[32px]">
+          {title}
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 relative">
-          {steps.map((step, i) => (
-            <div key={step.number} className="relative flex flex-col items-center">
-              {i < steps.length - 1 && (
-                <span className="hidden lg:block absolute top-7 left-1/2 w-full h-px border-t border-dashed border-[#cfe6ea] z-0" />
-              )}
+        <div className="relative grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.slice(0, 4).map((step, i) => {
+            const Icon = step.icon;
 
-              <div className="relative z-10 mb-5">
-                <span className="w-16 h-16 rounded-full bg-[#e7f7f9] text-[#0e7a8c] flex items-center justify-center text-[24px]">
-                  {step.icon}
-                </span>
-                <span className="absolute -bottom-2 -right-2 w-7 h-7 rounded-full bg-[#0e7a8c] text-white text-[11px] font-bold flex items-center justify-center">
-                  {step.number}
-                </span>
+            return (
+              <div
+                key={step.number}
+                className="relative flex flex-col items-center"
+              >
+                {i < Math.min(steps.length, 4) - 1 && (
+                  <span className="absolute left-1/2 top-7 z-0 hidden h-px w-full border-t border-dashed border-[#cfe6ea] lg:block" />
+                )}
+
+                <div className="relative z-10 mb-5">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#e7f7f9] text-[24px] text-[#0e7a8c]">
+                    <Icon />
+                  </span>
+
+                  <span className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#0e7a8c] text-[11px] font-bold text-white">
+                    {step.number}
+                  </span>
+                </div>
+
+                <h3 className="mb-2 text-[15.5px] font-bold text-slate-900">
+                  {step.title}
+                </h3>
+
+                <p className="max-w-[210px] text-[13px] leading-relaxed text-slate-500">
+                  {step.description}
+                </p>
               </div>
-
-              <h3 className="text-[15.5px] font-bold text-slate-900 mb-2">
-                {step.title}
-              </h3>
-              <p className="text-[13px] leading-relaxed text-slate-500 max-w-[210px]">
-                {step.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

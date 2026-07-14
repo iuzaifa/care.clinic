@@ -120,11 +120,7 @@ const Header = () => {
                   Doctors
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/gallery" className={navLinkStyles}>
-                  Gallery
-                </NavLink>
-              </li>
+             
               <li>
                 <NavLink to="/pricing" className={navLinkStyles}>
                   Pricing
@@ -175,11 +171,7 @@ const Header = () => {
                 Doctors
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/gallery" onClick={toggleMenu} className={({ isActive }) => `${navLinkStyles({ isActive })} block py-2 w-max`}>
-                Gallery
-              </NavLink>
-            </li>
+            
             <li>
               <NavLink to="/pricing" onClick={toggleMenu} className={({ isActive }) => `${navLinkStyles({ isActive })} block py-2 w-max`}>
                 Pricing

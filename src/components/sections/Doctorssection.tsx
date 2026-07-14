@@ -1,67 +1,81 @@
 import React from "react";
 import { FaStar, FaArrowRight, FaRegBookmark } from "react-icons/fa";
 
-interface Doctor {
+type Doctor = {
   name: string;
   specialty: string;
   rating: number;
-  photo: string;
-}
+  photo?: string;
+};
 
-const doctors: Doctor[] = [
-  {
-    name: "Dr. John Smith",
-    specialty: "Cardiologist",
-    rating: 5,
-    photo:
-      "https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    name: "Dr. Sarah Taylor",
-    specialty: "Neurologist",
-    rating: 5,
-    photo:
-      "https://images.unsplash.com/photo-1594824388853-d0c2d4e5a7c1?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    name: "Dr. Michael Brown",
-    specialty: "Orthopedic Surgeon",
-    rating: 5,
-    photo:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=400&q=80",
-  },
-  {
-    name: "Dr. Emily Davis",
-    specialty: "Pediatrician",
-    rating: 5,
-    photo:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80",
-  },
-];
+type DoctorsProps = {
+  badgeText?: string;
+  title?: string;
+  subtitle?: string;
+  doctors: Doctor[];
+  limit?: number;
+  columns?: 2 | 3 | 4;
+  hideViewAllText?: boolean
+  showViewAll?: boolean;
+  viewAllText?: string;
+  onViewAllClick?: () => void;
+};
 
-const DoctorsSection: React.FC = () => {
+const columnClasses: Record<number, string> = {
+  2: "lg:grid-cols-2",
+  3: "lg:grid-cols-3",
+  4: "lg:grid-cols-4",
+};
+
+const DoctorsSection: React.FC<DoctorsProps> = ({
+  badgeText = "Our Doctors",
+  title = "Meet Our Expert Doctors",
+  subtitle,
+  doctors,
+  limit,
+  columns = 4,
+  showViewAll = true,
+  viewAllText = "View All Doctors",
+  hideViewAllText = false,
+  onViewAllClick,
+}) => {
+  const displayedDoctors = limit ? doctors.slice(0, limit) : doctors;
+
   return (
     <section className="bg-[#eaf6f8] px-[5vw] py-20">
       <div className="max-w-[1320px] mx-auto">
+        {/* Header */}
         <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
           <div>
             <span className="inline-block text-[13px] font-bold tracking-[0.16em] uppercase text-[#0f8ea3] mb-3">
-              Our Doctors
+              {badgeText}
             </span>
             <h2 className="text-[28px] sm:text-[32px] font-extrabold leading-tight text-slate-900">
-              Meet Our Expert Doctors
+              {title}
             </h2>
+            {subtitle && (
+              <p className="mt-3 max-w-xl text-[15px] text-gray-600">
+                {subtitle}
+              </p>
+            )}
           </div>
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 text-[#0e7a8c] font-semibold text-[14px] hover:text-[#0b5f6e] transition-colors duration-200"
-          >
-            View All Doctors <FaArrowRight className="text-[12px]" />
-          </button>
+
+          {showViewAll && (
+  <button
+    type="button"
+    onClick={onViewAllClick}
+    className="inline-flex items-center gap-2 text-[#0e7a8c] font-semibold text-[14px] hover:text-[#0b5f6e] transition-colors duration-200"
+  >
+    {!hideViewAllText && (<>View All Doctors <FaArrowRight className="text-[12px]" /></>)} 
+  </button>
+)}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {doctors.map((doc) => (
+        {/* Grid */}
+        <div
+          className={`grid grid-cols-1 sm:grid-cols-2 ${columnClasses[columns]} gap-6`}
+        >
+          {displayedDoctors.map((doc) => (
             <div
               key={doc.name}
               className="bg-white rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(13,60,68,0.06)]"

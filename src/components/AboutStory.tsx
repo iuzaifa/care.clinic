@@ -1,41 +1,37 @@
 import React from "react";
 import { FaCheckCircle, FaArrowRight } from "react-icons/fa";
 
-type WhyChooseUsProps = {
+type AboutStoryProps = {
   badgeText?: string;
   title?: string;
+  description?: string;
   image: string;
   imageAlt?: string;
-  points: string[];
-  limit?: number;
+  points?: string[];
   showButton?: boolean;
   buttonText?: string;
   onButtonClick?: () => void;
-  reverse?: boolean;
 };
 
-const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
-  badgeText = "Why Choose Us",
-  title = "We Are Here For Your Care",
+const AboutStory: React.FC<AboutStoryProps> = ({
+  badgeText = "About CareClinic",
+  title = "A Legacy Of Trusted Care, Built Over Decades",
+  description = "Since 1990, CareClinic has been dedicated to delivering compassionate, patient-first healthcare across the community. What began as a single clinic has grown into a trusted network of specialists, diagnostic centers, and emergency care units.",
   image,
-  imageAlt = "Healthcare team caring for a patient",
-  points,
-  limit,
+  imageAlt = "CareClinic doctors",
+  points = [
+    "Board-certified doctors across 20+ specialties",
+    "State-of-the-art diagnostic and imaging equipment",
+    "24/7 emergency and telehealth support",
+  ],
   showButton = true,
-  buttonText = "Learn More",
+  buttonText = "Learn More About Us",
   onButtonClick,
-  reverse = false,
 }) => {
-  const displayedPoints = limit ? points.slice(0, limit) : points;
-
   return (
     <section className="bg-white px-[5vw] py-20">
-      <div
-        className={`max-w-[1320px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
-          reverse ? "lg:[&>*:first-child]:order-2" : ""
-        }`}
-      >
-        <div className="rounded-2xl overflow-hidden aspect-[4/3.1]">
+      <div className="max-w-[1320px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="rounded-2xl overflow-hidden aspect-[4/3.4]">
           <img
             src={image}
             alt={imageAlt}
@@ -47,12 +43,15 @@ const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
           <span className="inline-block text-[13px] font-bold tracking-[0.16em] uppercase text-[#0f8ea3] mb-3">
             {badgeText}
           </span>
-          <h2 className="text-[28px] sm:text-[32px] font-extrabold leading-tight text-slate-900 mb-6">
+          <h2 className="text-[28px] sm:text-[32px] font-extrabold leading-tight text-slate-900 mb-5">
             {title}
           </h2>
+          <p className="text-[14.5px] leading-relaxed text-slate-500 mb-7 max-w-[520px]">
+            {description}
+          </p>
 
           <ul className="flex flex-col gap-4 mb-8">
-            {displayedPoints.map((point) => (
+            {points.map((point) => (
               <li key={point} className="flex items-center gap-3">
                 <span className="text-[#0e7a8c] text-[17px] flex-shrink-0">
                   <FaCheckCircle />
@@ -77,35 +76,4 @@ const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
   );
 };
 
-export default WhyChooseUs;
-
-
-// how to use
-// // Home page — saare 5 points, default image
-// <WhyChooseUs
-//   image={whyChooseUsData.image}
-//   imageAlt={whyChooseUsData.imageAlt}
-//   points={whyChooseUsData.points}
-// />
-
-// // About page — sirf 3 points dikhao, custom title
-// <WhyChooseUs
-//   image={whyChooseUsData.image}
-//   points={whyChooseUsData.points}
-//   limit={3}
-//   title="What Sets Us Apart"
-// />
-
-// // Image ko right side, text ko left side karna ho
-// <WhyChooseUs
-//   image={whyChooseUsData.image}
-//   points={whyChooseUsData.points}
-//   reverse
-// />
-
-// // Button hide karna ho
-// <WhyChooseUs
-//   image={whyChooseUsData.image}
-//   points={whyChooseUsData.points}
-//   showButton={false}
-// />
+export default AboutStory;

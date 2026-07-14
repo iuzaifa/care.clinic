@@ -1,5 +1,7 @@
 import Breadcrumb from "../components/Breadcrumb";
+import CtaSection from "../components/sections/CtaSection";
 import DoctorsSection from "../components/sections/Doctorssection";
+import { doctorsData } from "./data/doctors";
 
 const Doctors = () => {
   return (
@@ -11,7 +13,9 @@ const Doctors = () => {
         btnText="Book an Appointment" // Optional: Remove this line if you don't want a button
         navigationPath=""    // Optional: Where the button redirects
       />
-      <DoctorsSection />
+      <DoctorsSection doctors={doctorsData} hideViewAllText={true}  />
+
+      <CtaSection/>
     </>
   );
 };
