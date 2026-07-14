@@ -10,14 +10,16 @@ const Blog = () => {
         title="Health Insights & Medical Articles"
         subtitle="Stay informed with expert-written articles on preventive care, treatments, and healthy living from our medical team."
         imageSrc="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1480&q=80"
-        navigationPath="#"
-        btnText="Book Appointment"
-      />
+        currentPage="Blog"
+        showSearch
+        onSearch={() => {}}
+     
+     />
 
       <BlogListSection
         posts={blog}
         postsPerPage={4}
-        onPostClick={(id) => console.log("Navigate to blog:", id)}
+        onPostClick={() => {}}
       />
 
       <CtaSection

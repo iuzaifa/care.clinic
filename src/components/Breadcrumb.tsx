@@ -1,56 +1,127 @@
-import { useNavigate } from 'react-router-dom';
-
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { FaChevronRight, FaSearch } from "react-icons/fa";
 
 type BreadcrumbProps = {
   title: string;
-  subtitle: string;
-  imageSrc: string; // camelCase standard
-  navigationPath?: string; // Clearer name to prevent collision with useNavigate hook
-  btnText?: string; // Clearer variable intent
+  subtitle?: string;
+  imageSrc: string;
+  imageAlt?: string;
+  currentPage?: string;
+  showSearch?: boolean;
+  searchPlaceholder?: string;
+  onSearch?: (query: string) => void;
 };
 
-const Breadcrumb = ({ title, subtitle, imageSrc, navigationPath = "", btnText = ""}: BreadcrumbProps) => {
-  const handleNavigate = useNavigate();
+const Breadcrumb: React.FC<BreadcrumbProps> = ({
+  title,
+  subtitle,
+  imageSrc,
+  imageAlt = "Page banner",
+  currentPage,
+  showSearch = false,
+  searchPlaceholder = "Search...",
+  onSearch,
+}) => {
+  const resolvedCurrentPage = currentPage ?? title;
 
   return (
-    <section className="relative min-h-[350px] sm:min-h-[450px] md:min-h-[550px] overflow-hidden flex items-center w-full">
-      
-      {/* Background Image Layer with responsive styling */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat" 
-        style={{ backgroundImage: `url(${imageSrc})` }} 
-      />
-      
-      {/* Dark overlay to ensure your text remains highly readable on bright background images */}
-      {/* <div className="absolute inset-0 bg-white/20" /> */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-cyan-900/90 to-transparent" />
+    <section className="relative overflow-hidden bg-slate-100 border-b-2 border-cyan-900/5">
+      <div className="relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          {/* Left: Text Content */}
+          <div className="pl-20">
+            {/* Breadcrumb trail */}
+            <div className="flex items-center gap-2 text-[13px] font-medium mb-5">
+              <NavLink
+                to="/"
+                className="text-[#0e7a8c] hover:text-[#0b5f6e] transition-colors duration-200"
+              >
+                Home
+              </NavLink>
+              <FaChevronRight className="text-[9px] text-slate-400" />
+              <span className="text-slate-500">{resolvedCurrentPage}</span>
+            </div>
 
-      {/* Fully responsive wrapper container */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center text-center lg:items-start lg:text-left">
-        
-        {/* Responsive title adjustments for Mobile, Tablets, and Desktops */}
-        <h1 className="text-white text-shadow-2xs font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl tracking-tight mb-4 max-w-3xl">
-          {title.length > 25 ? `${title.substring(0, 25)}...` : title}
-        </h1>
-        
-        {/* Responsive subtitle text formatting */}
-        <p className="text-white font-medium text-sm sm:text-base md:text-lg lg:text-xl max-w-2xl mb-8 leading-relaxed">
-          {subtitle.length > 150 ? `${subtitle.substring(0, 150)}...` : subtitle}
-        </p>
+            <h1 className="text-[34px] sm:text-[42px] lg:text-[46px] font-extrabold leading-tight text-slate-900 mb-4">
+              {title}
+            </h1>
 
-        {/* Dynamically hidden button — only displays if button text is actually provided */}
-        {btnText && (
-          <button 
-            onClick={() => handleNavigate(navigationPath)}
-            className="px-6 py-3 bg-cyan-600 text-white cursor-pointer font-semibold rounded-xl shadow-lg hover:bg-cyan-700 active:scale-95 transition-all duration-200 text-sm sm:text-base"
-          >
-            {btnText}
-          </button>
-        )}
+            {subtitle && (
+              <p className="text-[15px] leading-relaxed text-slate-500 max-w-[440px] mb-7">
+                {subtitle}
+              </p>
+            )}
 
+            {showSearch && (
+              <div className="flex items-center max-w-[420px] rounded-full bg-white border border-slate-200 shadow-[0_10px_30px_rgba(13,60,68,0.08)] overflow-hidden">
+                <input
+                  type="text"
+                  placeholder={searchPlaceholder}
+                  onChange={(e) => onSearch?.(e.target.value)}
+                  className="flex-1 py-3.5 px-6 text-[13.5px] outline-none bg-transparent"
+                />
+                <button
+                  type="button"
+                  aria-label="Search"
+                  className="flex items-center justify-center w-12 h-12 m-1 rounded-full bg-[#0e7a8c] hover:bg-[#0b5f6e] text-white transition-colors duration-200 flex-shrink-0"
+                >
+                  <FaSearch className="text-[14px]" />
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Right: Circular Image */}
+          <div className="relative hidden lg:flex justify-end">
+            <div className="relative w-full max-w-[560px] aspect-[16/11] rounded-l-full rounded-r-3xl overflow-hidden">
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Mobile Image */}
+          <div className="lg:hidden rounded-3xl overflow-hidden aspect-[16/10]">
+            <img
+              src={imageSrc}
+              alt={imageAlt}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default Breadcrumb;
+
+
+// // Blog page — search bar ke saath
+// <Breadcrumb
+//   title="Our Blog"
+//   subtitle="Stay informed with the latest health tips, medical insights, and wellness advice from our healthcare experts."
+//   imageSrc="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=80"
+//   currentPage="Blog"
+//   showSearch
+//   onSearch={(q) => console.log(q)}
+// />
+
+// // About page — search ke bina
+// <Breadcrumb
+//   title="About CareClinic"
+//   subtitle="Caring for the health and well-being of your family since 1990."
+//   imageSrc="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1000&q=80"
+//   currentPage="About Us"
+// />
+
+// // Contact page
+// <Breadcrumb
+//   title="Contact Us"
+//   subtitle="Reach out to our team for appointments, questions, or support."
+//   imageSrc="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1000&q=80"
+//   currentPage="Contact"
+// />

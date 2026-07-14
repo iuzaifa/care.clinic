@@ -28,6 +28,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
         <img
           src={post.image}
           alt={post.title}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <span className="absolute top-4 left-4 text-[11px] font-bold uppercase tracking-wide px-3 py-1.5 rounded-full bg-white/95 text-[#0e7a8c] backdrop-blur-sm">
@@ -57,6 +59,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, onClick }) => {
             <img
               src={post.authorPhoto}
               alt={post.author}
+              loading="lazy"
+              decoding="async"
               className="w-8 h-8 rounded-full object-cover"
             />
             <span className="text-[13px] font-semibold text-slate-700">

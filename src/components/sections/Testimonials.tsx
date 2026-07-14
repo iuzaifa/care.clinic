@@ -38,9 +38,16 @@ const Testimonials: React.FC<TestimonialsProps> = ({
 
   React.useEffect(() => {
     if (!autoPlay || displayedTestimonials.length <= 1) return;
-    const timer = setInterval(goNext, autoPlayInterval);
-    return () => clearInterval(timer);
+
+    const timer = window.setInterval(() => {
+      setIndex(
+        (prev) => (prev + 1) % displayedTestimonials.length
+      );
+    }, autoPlayInterval);
+
+    return () => window.clearInterval(timer);
   }, [autoPlay, autoPlayInterval, displayedTestimonials.length]);
+
 
   if (displayedTestimonials.length === 0) return null;
 

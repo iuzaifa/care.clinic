@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             <FooterItem title="">
               <Link to="/">
-                <img src={logo} alt="Care Clinic" className="h-10 mb-8" />
+                <img src={logo} alt="Care Clinic" loading="lazy" decoding="async" className="h-10 mb-8" />
               </Link>
               <Paragraph variant="default" size="sm" leading="normal">
                 Lorem ipsum dolor sit consectet adipisicing sed do eiusmod temp incididunt ut labore. Lorem Ipsum is simply dummy.

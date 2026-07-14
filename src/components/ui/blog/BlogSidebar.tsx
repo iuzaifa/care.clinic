@@ -67,6 +67,8 @@ const BlogSidebar: React.FC<BlogSidebarProps> = ({
               <img
                 src={post.image}
                 alt={post.title}
+                loading="lazy"
+                decoding="async"
                 className="w-16 h-16 rounded-xl object-cover flex-shrink-0"
               />
               <div>

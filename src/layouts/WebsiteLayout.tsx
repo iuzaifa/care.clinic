@@ -7,7 +7,7 @@ const WebsiteLayout = () => {
     <>
       <Header />
       <main className="pt-16">
-        <Outlet />
+        <Outlet /> 
       </main>
       <Footer />
     </>
