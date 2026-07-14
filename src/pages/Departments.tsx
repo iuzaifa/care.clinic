@@ -1,6 +1,5 @@
-// import HeroSection from "../components/HeroSection";
-import DepartmentSection from "../components/sections/department/DepartmentSection";
-import DoctorsSection from "../components/sections/doctor/DoctorsSection";
+import DepartmentSection from "../components/sections/DepartmentSection";
+import DoctorsSection from "../components/sections/Doctorssection";
 import { Stories } from "../components/Stories";
 
 const Departments = () => {

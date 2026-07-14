@@ -1,5 +1,5 @@
 import Breadcrumb from "../components/Breadcrumb";
-import DoctorsSection from "../components/sections/doctor/DoctorsSection";
+import DoctorsSection from "../components/sections/Doctorssection";
 
 const Doctors = () => {
   return (

@@ -1,4 +1,5 @@
 import Breadcrumb from "../components/Breadcrumb";
+import DoctorsSection from "../components/sections/Doctorssection";
 
 const About = () => {
   return (
@@ -9,9 +10,12 @@ const About = () => {
         imageSrc="https://img.magnific.com/premium-photo/three-confident-medical-professionals-with-crossed-arms-wearing-white-lab-coats_116547-98005.jpg?w=1480"
         navigationPath="#"
         btnText="Book  Appointment"
-
-      
       />
+
+      <DoctorsSection/>
+
+
+
     
     </>
   );
