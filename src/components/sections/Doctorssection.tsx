@@ -35,7 +35,7 @@ const DoctorsSection: React.FC<DoctorsProps> = ({
   limit,
   columns = 4,
   showViewAll = true,
-  viewAllText = "View All Doctors",
+    // viewAllText removed (unused)
   hideViewAllText = false,
   onViewAllClick,
 }) => {
